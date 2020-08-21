@@ -1,16 +1,16 @@
 package main
 
 import (
-	"fmt"
 	"database/sql"
-	_"github.com/go-sql-driver/mysql"
+	"fmt"
+	_ "github.com/go-sql-driver/mysql"
 )
 
 func dbConn() (db *sql.DB) {
 	dbDriver := "mysql"
 	dbUser := "root"
 	dbPass := "root"
-	dbName := "goblog"
+	dbName := "db"
 	db, err := sql.Open(dbDriver, dbUser+":"+dbPass+"@/"+dbName)
 	if err != nil {
 		panic(err.Error())
@@ -18,9 +18,8 @@ func dbConn() (db *sql.DB) {
 	return db
 }
 
-func main()  {
-	fmt.Println("Go MySql Tutorial")
+func main() {
+	fmt.Println("Connect Go to MySql")
 	db := dbConn()
-
 	defer db.Close()
 }
